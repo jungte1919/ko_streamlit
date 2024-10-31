@@ -1,4 +1,3 @@
-%%writefile streamlit_app.py
 import koreanize_matplotlib
 import pandas as pd
 import plotly.express as px

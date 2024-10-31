@@ -3,3 +3,4 @@ koreanize-matplotlib
 pandas
 plotly
 kolabpy
+saspy

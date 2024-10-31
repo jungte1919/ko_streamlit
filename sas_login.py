@@ -1,20 +1,16 @@
-import kolabpy
+import saspy
 
-def sas_login(id, password, server):
-    """
-    Log in to SAS using kolabpy and return the session object.
-    
-    Parameters:
-    - id (str): User ID
-    - password (str): User password
-    - server (str): Server name
-    
-    Returns:
-    - SAS session object if successful, else raises an exception.
-    """
-    try:
-        sas = kolabpy.SASLogin(id, password, 'oda', server)
-        kolabpy.SASMagic(sas, 'oda')
-        return sas
-    except Exception as e:
-        raise RuntimeError(f"Login failed: {e}")
+def SASLogin(id, pw, sys='viya',server="Asia Pacific Home Region 1") :
+  if sys == 'viya' :
+    sas = saspy.SASsession(ip='147.47.206.193', user=str(id), pw=str(pw), verify=False, context='SAS Studio compute context', encoding='utf-8')
+  if (sys == 'oda' and server == "US Home Region 1") :
+    sas = saspy.SASsession(java='/usr/bin/java', iomhost = ['odaws01-usw2.oda.sas.com','odaws02-usw2.oda.sas.com','odaws03-usw2.oda.sas.com','odaws04-usw2.oda.sas.com'], iomport=8591, encoding='utf-8', omruser=str(id), omrpw=str(pw))
+  elif (sys == 'oda' and server == "US Home Region 2") :
+    sas = saspy.SASsession(java='/usr/bin/java', iomhost =['odaws01-usw2-2.oda.sas.com','odaws02-usw2-2.oda.sas.com'], iomport=8591, encoding='utf-8', omruser=str(id), omrpw=str(pw))
+  elif (sys == 'oda' and server == "European Home Region 1") :
+    sas = saspy.SASsession(java='/usr/bin/java', iomhost =['odaws01-euw1.oda.sas.com','odaws02-euw1.oda.sas.com'], iomport=8591, encoding='utf-8', omruser=str(id), omrpw=str(pw))
+  elif (sys == 'oda' and server == "Asia Pacific Home Region 2") :
+    sas = saspy.SASsession(java='/usr/bin/java', iomhost =['odaws01-apse1-2.oda.sas.com','odaws02-apse1-2.oda.sas.com'], iomport=8591, encoding='utf-8', omruser=str(id), omrpw=str(pw))
+  elif (sys == 'oda' and server == "Asia Pacific Home Region 1") :
+    sas = saspy.SASsession(java='/usr/bin/java', iomhost =['odaws01-apse1.oda.sas.com','odaws02-apse1.oda.sas.com'], iomport=8591, encoding='utf-8', omruser=str(id), omrpw=str(pw))
+  return sas

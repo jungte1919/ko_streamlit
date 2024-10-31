@@ -4,6 +4,9 @@ import plotly.express as px
 import streamlit as st
 from sas_login import SASLogin
 
+# Page title
+st.set_page_config(page_title="SAS Login", layout="wide")
+
 본청_광역 = pd.read_csv('https://www.googleapis.com/drive/v3/files/1SsnRU9nG0Zhk5b18gZjUzInAyQAVFBWa?alt=media&key=AIzaSyAViyxfaLGCnbTU_km6EIOfbV2eIn1rROM',encoding='euc-kr')
 plotly_df = 본청_광역.melt(
     id_vars=['PRD_DE', 'C1', 'C1_NM'],
@@ -41,8 +44,6 @@ fig.update_layout(
 # Display the plot
 st.plotly_chart(fig)
 
-# Page title
-st.set_page_config(page_title="SAS Login", layout="wide")
 
 # Create two columns for layout
 col1, col2 = st.columns([1, 3])  # Adjust column ratio as needed

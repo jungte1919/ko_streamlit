@@ -9,6 +9,7 @@ warnings.filterwarnings("ignore", category=ImportWarning)
 
 version=str(sys.version_info.major)+'.'+str(sys.version_info.minor)
 print(version)
+"""
 url = 'https://www.googleapis.com/drive/v3/files/1wQkHbgrcF03hN8CrIFLK4zsqU-ckVRyK?alt=media&key=AIzaSyBfJIzuu9x7AZjgtr0UhbrxNTz0vqbYWv0'
 dst = '/usr/local/lib/python'+version+'/dist-packages/saspy/java/iomclient/sas.rutil.jar'
 open(dst, 'wb').write(requests.get(url).content)
@@ -18,6 +19,7 @@ open(dst, 'wb').write(requests.get(url).content)
 url = 'https://www.googleapis.com/drive/v3/files/1wTOLejKU5UKw61KGu4oT_WM4ZdWOAdqu?alt=media&key=AIzaSyBfJIzuu9x7AZjgtr0UhbrxNTz0vqbYWv0'
 dst = '/usr/local/lib/python'+version+'/dist-packages/saspy/java/iomclient/sastpj.rutil.jar'
 open(dst, 'wb').write(requests.get(url).content)
+"""
 
 def SASLogin(id, pw, sys='viya',server="Asia Pacific Home Region 1") :
   if sys == 'viya' :

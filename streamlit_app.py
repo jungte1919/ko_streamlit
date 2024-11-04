@@ -3,6 +3,11 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from sas_login import SASLogin
+import os
+
+# 자바 버전 확인 (테스트용)
+java_version = os.popen("java -version").read()
+st.text(f"Java Version: {java_version}")
 
 # Page title
 st.set_page_config(page_title="SAS Login", layout="wide")

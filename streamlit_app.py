@@ -5,12 +5,13 @@ import streamlit as st
 from sas_login import SASLogin
 import os
 
+# Page title
+st.set_page_config(page_title="SAS Login", layout="wide")
+
 # 자바 버전 확인 (테스트용)
 java_version = os.popen("java -version").read()
 st.text(f"Java Version: {java_version}")
 
-# Page title
-st.set_page_config(page_title="SAS Login", layout="wide")
 
 본청_광역 = pd.read_csv('https://www.googleapis.com/drive/v3/files/1SsnRU9nG0Zhk5b18gZjUzInAyQAVFBWa?alt=media&key=AIzaSyAViyxfaLGCnbTU_km6EIOfbV2eIn1rROM',encoding='euc-kr')
 plotly_df = 본청_광역.melt(
